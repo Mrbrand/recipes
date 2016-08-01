@@ -1,0 +1,129 @@
+body {margin:0;  font-family:Verdana,Tahoma;background:#FFFFCC;}
+.page {width:100%;    top:0px;   display:none;}
+
+#new{min-height:1000px;}
+#edit{min-height:1000px;}
+/****************************************************************************/
+/****** HEADER **************************************************************/
+/****************************************************************************/
+
+#export-table td{border: 1px solid gray;  color: white;}
+
+    .header{
+      padding:5px;
+      background:#7A7;
+      margin:0;
+      height:35px;
+      font-size: 12pt;
+      color: #333;
+      display: block;
+    }
+    
+    #meals .header{
+      background:#FC4;
+    }
+    
+    .menu-title {margin-left:5px; width:240px; display:block; float:left; text-overflow:ellipsis; white-space:nowrap;overflow: hidden; font-size: 20px; text-shadow:1px 1px 1px #123;}
+    .new-button {float:right;}
+    .back-button {float:left;}
+	 .cancel-button {float:left;}
+	 .add-button{float:right;}
+	 
+    .submenu{background: linear-gradient(#677, #344);padding:15px 5px; height:30px;}
+    .search{border-radius:3px;width:150px;}
+	 .type-filter {border-radius:3px;width:45%;}
+	 
+
+button{
+	-moz-box-shadow:inset 0px 1px 0px 0px #e3e3e3;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #e3e3e3;
+	box-shadow:inset 0px 1px 0px 0px #e3e3e3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e0e0e0), color-stop(1, #b5b3b5));
+	background:-moz-linear-gradient(top, #e0e0e0 5%, #b5b3b5 100%);
+	background:-webkit-linear-gradient(top, #e0e0e0 5%, #b5b3b5 100%);
+	background:-o-linear-gradient(top, #e0e0e0 5%, #b5b3b5 100%);
+	background:-ms-linear-gradient(top, #e0e0e0 5%, #b5b3b5 100%);
+	background:linear-gradient(to bottom, #e0e0e0 5%, #b5b3b5 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e0e0e0', endColorstr='#b5b3b5',GradientType=0);
+	background-color:#e0e0e0;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#525252;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #dbdbdb;
+}
+button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b5b3b5), color-stop(1, #e0e0e0));
+	background:-moz-linear-gradient(top, #b5b3b5 5%, #e0e0e0 100%);
+	background:-webkit-linear-gradient(top, #b5b3b5 5%, #e0e0e0 100%);
+	background:-o-linear-gradient(top, #b5b3b5 5%, #e0e0e0 100%);
+	background:-ms-linear-gradient(top, #b5b3b5 5%, #e0e0e0 100%);
+	background:linear-gradient(to bottom, #b5b3b5 5%, #e0e0e0 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b5b3b5', endColorstr='#e0e0e0',GradientType=0);
+	background-color:#b5b3b5;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+/****************************************************************************/
+/****** ITEMS IN LIST **********************************************************/
+/****************************************************************************/
+.empty{background:#535069; margin-top:100px;color:gray; text-align: center;}
+
+.subitem{
+    font-size: 10pt;
+    padding-bottom: 3px;
+    background: -webkit-linear-gradient(#FFF, #CCC);
+    color: #333;
+    background-size: auto 100%;
+    min-height:70px;
+}
+
+
+
+.subitem-center{    width:auto;    padding-top:3px;     padding-left:7px;     overflow:hidden;    cursor:pointer;   min-height:60px;}
+.subitem-left{ height:100%;  min-height: 60px;   width:45px;    float:left;    cursor:pointer;    padding:2px;}
+
+.title{  font-weight:bold;   float:left;    display: block;    width:100%; color: #333; font-size:14pt; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom:3px;}
+.notes {display: block;    font: italic 10px Arial;    color: #999;    max-height:100px;    margin-right:5px;   white-space: pre-line; }
+.subitem-next-action{color:#484; float: left;  display: block;  height: 17px; overflow: hidden; width:200px; text-overflow:ellipsis; white-space:nowrap;}
+.subitem-notes {float: left;  display: block;  font-size: 8pt;  height: 15px; overflow: hidden; width:200px; text-overflow:ellipsis; white-space:nowrap;}
+/*.notes {display: block; font: italic 10px Arial; color: #999; height: 12px; overflow: hidden; width:300px; text-overflow:ellipsis; white-space:nowrap;}*/
+ .date{font-size:9px;color:#FF6;}
+ 
+ #meals .title{color: #FFF;}
+ 
+.next_action {font-size:10px;  color: #399;  height: 12px; overflow: hidden;}  
+.task_notes {font-size: 8pt;  color: #999;  height: 15px; overflow: hidden;}  
+.finish_date{ font-size:10px;  color: #974;  height: 12px; overflow: hidden;font-weight:bold;}  
+	 
+.subitem .category {font-size:7px; display:block;margin-left: 3px;}
+.subitem .status {font-size:8px; display:block;margin-left: 5px;}
+.subitem .prio {font-size:8px; display:block;}
+
+.field-description{font-size:10px; display:block;color:gray;margin-left:5px;}
+
+
+/****** FORM FIELDS *******/
+textarea {width:100%;  border:0; padding:5px; margin:0; font-size:12pt; color:#555; margin-bottom:2px; font-family:Verdana,Tahoma;box-sizing: border-box; border: 1px solid gray;}
+select {  width:100%;  border: 0;  padding:5px;  margin:0;  font-size: 12pt;  color: #555;  margin-bottom: 3px;box-sizing: border-box;}
+input {  width:100%;  margin:0;  font-size: 12pt;  height: 30px;  margin-bottom: 3px;box-sizing: border-box;}
+.btn {  width:100%;  margin:0;  font-size: 12pt;  height: 30px;  margin-bottom: 3px;box-sizing: border-box;}
+
+.finished{
+    background: -webkit-linear-gradient(#99A, #778);
+}
+
+
