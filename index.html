@@ -34,22 +34,22 @@
 			</div> <!--end header-->
 			
 			<!--Sub-meny-->
-			<div class="submenu">
+			<div class="menu">
 				
                 <!--button id="extra-controls-button" onclick="$('.extra-controls').toggle();" style="float:left;  margin-left:10px;">...</button-->
                 <!img  src="img/icon.png"  style="margin:5px;vertical-align: text-top; height:30px;"/>
                 
-                <select id="sortby" style="width:150px; float:left;">
+                <!--select id="sortby" style="width:150px; float:left;">
                 	<option value="date">Sort by</option>
                 	<option value="history">Purchase count</option>
                 	<option value="date">Finish Date</option>
-            	</select>
+            	</select-->
             	
                 <! New button>
-				<button id="quick_add" style="float:right;margin-left:10px;">Add</button>
+				<button id="new-button" style="float:right;margin-left:10px;">New</button>
     			
                 <!--Search input-->
-                <input id="quick_search" onkeyup="refresh_groceries();" placeholder="Search/quick add" style="float:right;width:100px;border-radius:3px;"/>
+                <input id="search" onkeyup="refresh_list();" placeholder="Search" style="float:left;width:100px;border-radius:3px;"/>
 				
                
 			</div><!-- end controls-->
@@ -66,27 +66,74 @@
             
 		</div><!-- end page-->
 		
-        
+		
+		
+ <!-- NEW ---------------------------------------------------------------------->
+		<div id="new" class="page"  style="display:none;">
+			
+			<div class="header">
+				<div class="menu-title">New...</div>
+			</div> <!--end header-->
+			
+			<!--Submeny-->
+			<div class="menu">
+				<button class="cancel-button">Cancel</button>
+				<button class="add-button" style="width:70px; float:right;margin-left:5px;"><img src="img/save.png" /></button>
+				<br/><br/>
+			</div><!-- end menu--> 
+            
+            <! FORM >
+			<form id="new-item-form">
+				<input name="title" type="text" style="margin-bottom:5px;height:50px; font-size:1.3em" placeholder="Title"/><br/>
+                <input  name="tags" type="text" style="margin-bottom:5px;height:50px; font-size:1.3em" placeholder="Tags"/><br/>
+			     <textarea name="ingrediens" rows="4" placeholder="Ingredienser"></textarea>
+			      <textarea name="instructions" rows="4" placeholder="Instruktioner"></textarea>
+            
+    			<center>
+    				<button class="more-button" type='button'>More options</button>
+    			</center>
+    			
+                <div class="more" style="display:none;">
+    				<span class="field-description">id:</span>
+    				<input class="item-id" name="id" type="text" style="color:#CCC;"/> <br/>
+        	        <span class="field-description">Status:</span>
+                    <input class="status" type="text" name="status" />
+                    <span class="field-description">Start Date:</span>
+                    <input class="start_date" type="text" name="start_date" />
+                    <span class="field-description">Finish Date:</span>
+                    <input class="finish_date_input" type="text" name="finish_date" />
+                    <span class="field-description">Type:</span>
+                    <input class="type_input" type="text" name="type" />
+                    
+                     <span class="field-description">History:</span>
+                    <div id="history_items"></div>
+                    
+                </div>
+            
+			</form>
+		</div><!--edit-item-->
 
-		<!-- EDIT ---------------------------------------------------------------------->
+<!-- EDIT ---------------------------------------------------------------------->
 		<div id="edit" class="page"  style="display:none;">
 			
 			<div class="header">
 				<div class="menu-title">-item-title-</div>
 			</div> <!--end header-->
 			
-			<!--Sub-meny-->
-			<div class="submenu">
+			<!--Submeny-->
+			<div class="menu">
 				<button class="cancel-button">Cancel</button>
 				<button class="save-button" style="width:70px; float:right;margin-left:5px;"><img src="img/save.png" /></button>
 				<button class="delete-button" style="width:70px; float:right;margin-left:5px;"><img src="img/delete2.png" /></button>
 				<br/><br/>
-			</div><!-- end controls--> 
+			</div><!-- end menu--> 
             
-			<form id="edit-groceries-form">
+			<form id="edit-item-form">
 				<input name="title" type="text" style="margin-bottom:5px;height:50px; font-size:1.3em"/><br/>
-                <input  name="refill" type="text" style="margin-bottom:5px;height:50px; font-size:1.3em" placeholder="Refill time"/><br/>
-			    <textarea name="notes" rows="4" placeholder="Notes"></textarea>
+                <input  name="tags" type="text" style="margin-bottom:5px;height:50px; font-size:1.3em" placeholder="Tags"/><br/>
+			     <textarea name="ingrediens" rows="4" placeholder="Ingredienser"></textarea>
+			      <textarea name="instructions" rows="4" placeholder="Instruktioner"></textarea>
+            
             
     			<center>
     				<button class="more-button" type='button'>More options</button>
@@ -120,7 +167,7 @@
 			</div> <!--end header-->
 			
 			<!--Sub-meny-->
-			<div class="submenu">
+			<div class="menu">
 				<button class="cancel-button">Back</button>
                  <!--button onclick="save_preferences();" style="float:right;">Save</button-->
 			</div><!-- end controls-->
@@ -150,63 +197,20 @@
 
 <!-- Mustache template open -->
 <script id="open_items_template" type="text/template">
-	<div class="subitem project">
+	<div class="item">
         	
 		<div class="subitem-center">
 			<div class="title">{{title}}</div>
 			<div class="next_action_div" style="float:left;">
-				{{#notes}}<span class="notes">{{notes}}</span>{{/notes}}
+				{{#tags}}<span class="notes">{{tags}}</span>{{/tags}}
 			</div>
-            <button class="purchase" style="float:right;margin-right:5px;width:70px; "><img src="img/finish.gif"></button>
-            
-            <button class="increase" style="float:right;margin-right:5px;">+</button>
-            <div style="float:right; padding:3px; font-size:15pt;">{{amount}}</div>
-            <button class="decrease" style="float:right;margin-right:5px;">-</button>
-            
-            <button class="unlist" style="width:70px; float:right;margin-right:5px;"><img src="img/delete.png" /></button>
 		</div><!-- end subitem-center -->
 		 
 		<div style="clear:both;"></div>
 		
 		<span class="item_id" style="display:none;">{{id}}</span>
 		<span class="importance" style="display:none;">{{importance}}</span>
-		
-		
-	</div>
-    
-</script>	
 	
-<!-- Mustache template finished -->
-<script id="finished_items_template" type="text/template">
-    <div class="subitem project finished">
-						
-		<!--div class="subitem-left quick_edit_item ">
-			<div style="font-size: 20px; color:#DDA;text-align: center;"> {{days_ago}}</div>
-            <div style="font-size: 8px; color:#AAA;text-align: center;">days ago</div>
-		</div-->
-		
-		<div class="subitem-center">
-			<div class="title"  style="color:#DDD;">{{title}}</div>
-			<div class="next_action_div" style="float:left;">
-    			<span style="font-size: 12px; color:#DDA;text-align: center;">{{amount}} </span>
-    			<span style="font-size: 12px; color:#AAA;">pcs</span>
-    			<span style="font-size: 12px; color:#DDA;text-align: center;"> {{days_ago}}</span>
-    			<span style="font-size: 12px; color:#AAA;"> days ago</span>   <br>
-    			
-    			<span style="font-size: 12px; color:#AAA;">Purchased</span>
-    			<span style="font-size: 12px; color:#DDA;text-align: center;"> {{history}}</span>
-    			<span style="font-size: 12px; color:#AAA;"> times </span> 
-    			
-			</div>
-            <button class="tolist" style="float:right;margin-right:5px;width:70px; "><img src="img/cart.png" /></button>
-
-		</div><!-- end subitem-center -->
-		 
-		<div style="clear:both;"></div>
-		
-		<span class="item_id" style="display:none;">{{id}}</span>
-		<span class="importance" style="display:none;">{{importance}}</span>
-		
 	</div>
     
 </script>	
